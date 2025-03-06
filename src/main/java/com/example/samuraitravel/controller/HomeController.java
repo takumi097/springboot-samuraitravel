@@ -11,19 +11,18 @@ import com.example.samuraitravel.service.HouseService;
 
 @Controller
 public class HomeController {
-    private final HouseService houseService;
-
-    public HomeController(HouseService houseService) {
-        this.houseService = houseService;
-    }    
-    
-    @GetMapping("/")
-    public String index(Model model) {
-    	List<House> newHouses = houseService.findTop8HousesByOrderByCreatedAtDesc();
-        List<House> popularHouses = houseService.findTop3HousesByOrderByReservationCountDesc();
-        model.addAttribute("newHouses", newHouses);
-        model.addAttribute("popularHouses", popularHouses);
-
-        return "index";
-    }
+	private final HouseService houseService;
+	
+	public HomeController(HouseService houseService) {
+		this.houseService = houseService;
+	}
+	@GetMapping("/")
+	public String index(Model model) {
+		List<House> newHouses = houseService.findTop8HouseByOrderByCreatedAtDesc();
+		List<House> popularHouse = houseService.findTop3HouseByOrderByReservationCountDesc();
+		model.addAttribute("newHouses", newHouses); 
+		model.addAttribute("popularHouse", popularHouse);
+		
+		return "index";
+	}
 }

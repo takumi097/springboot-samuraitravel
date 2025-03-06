@@ -11,15 +11,15 @@ import lombok.Data;
 
 @Data
 public class ReservationInputForm {
-    @NotNull(message = "チェックイン日を選択してください。")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate checkinDate;
+	@NotNull(message = "チェックイン日を選択してください。")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate checkinDate;
 
-    @NotNull(message = "チェックアウト日を選択してください。")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate checkoutDate;
-
-    @NotNull(message = "宿泊人数を入力してください。")
-    @Min(value = 1, message = "宿泊人数は1人以上に設定してください。")
-    private Integer numberOfPeople;
+	@NotNull(message = "チェックアウト日を選択してください。")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate checkoutDate;
+	
+	@NotNull(message = "宿泊人数を入力してください。")
+	@Min(value = 1, message = "宿泊人数は1人以上に設定してください。")
+	private Integer numberOfPeople;
 }

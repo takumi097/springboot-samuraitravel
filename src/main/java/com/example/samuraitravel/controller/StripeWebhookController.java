@@ -25,11 +25,11 @@ public class StripeWebhookController {
 	}
 	
 	@PostMapping("/stripe/webhook")
-	public ResponseEntity<String> webhook(@RequestBody String payload, @RequestHeader("stripe-signature") String sigHeader) {
+	public ResponseEntity<String> webhook(@RequestBody String payload, @RequestHeader("Stripe-Signature") String sigHeader) {
 		Event event = null;
 		
 		try {
-			event = Webhook.constructEvent(payload,  sigHeader,  webhookSecret);
+			event = Webhook.constructEvent(payload, sigHeader, webhookSecret);
 		} catch (SignatureVerificationException e) {
 			System.out.println("Webhookの署名シークレットが正しくありません。");
 			

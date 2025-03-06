@@ -87,3 +87,16 @@ INSERT IGNORE INTO reservations (id, house_id, user_id, checkin_date, checkout_d
 INSERT IGNORE INTO reservations (id, house_id, user_id, checkin_date, checkout_date, number_of_people, amount) VALUES (9, 9, 1, '2023-04-01', '2023-04-02', 5, 9000);
 INSERT IGNORE INTO reservations (id, house_id, user_id, checkin_date, checkout_date, number_of_people, amount) VALUES (10, 10, 1, '2023-04-01', '2023-04-02', 6, 10000);
 INSERT IGNORE INTO reservations (id, house_id, user_id, checkin_date, checkout_date, number_of_people, amount) VALUES (11, 11, 1, '2023-04-01', '2023-04-02', 2, 6000);
+
+/*reviewsテーブル*/
+INSERT IGNORE INTO reviews (id, user_id, house_id, score, comment) VALUES (1, 1, 1, 1, 'コメント1');
+INSERT IGNORE INTO reviews (id, user_id, house_id, score, comment) VALUES (2, 2, 1, 2, 'コメント2');
+INSERT IGNORE INTO reviews (id, user_id, house_id, score, comment) VALUES (3, 3, 1, 3, 'コメント3');
+INSERT IGNORE INTO reviews (id, user_id, house_id, score, comment) VALUES (4, 4, 1, 4, 'コメント4');
+INSERT IGNORE INTO reviews (id, user_id, house_id, score, comment) VALUES (5, 5, 1, 5, 'コメント5');
+INSERT IGNORE INTO reviews (id, user_id, house_id, score, comment) VALUES (6, 6, 1, 1, 'コメント6');
+INSERT IGNORE INTO reviews (id, user_id, house_id, score, comment) VALUES (7, 7, 1, 2, 'コメント7');
+INSERT IGNORE INTO reviews (id, user_id, house_id, score, comment) VALUES (8,  8, 1, 3, 'コメント8');
+INSERT IGNORE INTO reviews (id, user_id, house_id, score, comment) VALUES (9, 9, 1, 4, 'コメント9');
+INSERT IGNORE INTO reviews (id, user_id, house_id, score, comment) VALUES (10, 10, 1, 5, 'コメント10');
+INSERT IGNORE INTO reviews (id, user_id, house_id, score, comment) VALUES (11, 11, 1, 1, 'コメント11');

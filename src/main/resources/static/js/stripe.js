@@ -1,8 +1,8 @@
-const stripe = Stripe('pk_test_51Qwzd7PDQPhxURP66e0K4PK17NpDSQq16U0Puk7IVJmJ13plVkq1J5ZwReULzGWAnQSC0ZMJnXJ48ERwYAMjozKz00V1lYk1pw');
+const stripe = Stripe('pk_test_51Lcdg9H3mwyalYUk46aziPeYiD1r5WzCPaNoo9R13g0s145ose5W8t3OGhxQc78e2K7fJDJ6jcY6LiToqO6dlpwn00wnPuGSnz');
 const paymentButton = document.querySelector('#paymentButton');
 
 paymentButton.addEventListener('click', () => {
- stripe.redirectToCheckout({
-   sessionId: sessionId
- })
+  stripe.redirectToCheckout({
+    sessionId: sessionId
+  })
 });

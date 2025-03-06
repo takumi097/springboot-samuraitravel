@@ -1,49 +1,57 @@
 html {
-  font-size: 14px;
+ font-size: 14px;
 }
 
 body {
-  font-family: 'Noto Sans JP', sans-serif;
+ font-family: 'Noto Sans JP', sans-serif;
 }
 
 h1 {
   font-size: 1.5rem;
 }
 
+h2 {
+	font-size: 1.475rem;
+}
+
 h3 {
-  font-size: 1.25rem;
+	font-size: 1.25rem;
 }
 
 a {
-  color: #5196a6;
-  text-decoration: none !important;
+ color: #5196a6;
+ text-decoration: none !important;
 }
 
 a:hover {
-    color: #407784;
+ color: #407784;
 }
 
 footer {
-  width: 100%;
-  height: 60px;
-  position: absolute;
-  bottom: 0;
-  background-color: #f2f0eb;
+ width: 100%;
+ height: 60px;
+ position: absolute;
+ bottom: 0;
+ background-color: #f2f0eb;
+}
+
+option {
+  background-color: #FFA500;
 }
 
 .samuraitravel-wrapper {
-  min-height: 100vh;
-  position: relative;
-  padding-bottom: 60px;
-  box-sizing: border-box;
+ min-height: 100vh;
+ position: relative;
+ padding-bottom: 60px;
+ box-sizing: border-box;
 }
 
 .samuraitravel-navbar {
-  min-height: 60px;
+ min-height: 60px;
 }
 
 .samuraitravel-logo {
-  height: 30px;
+ height: 30px;
 }
 
 .samuraitravel-btn {
@@ -60,38 +68,38 @@ footer {
 }
 
 .samuraitravel-page-link {
-	color: #5196a6;
+  color: #5196a6;
 }
 
 .samuraitravel-page-link:hover {
-	color: #407784;	
+  color: #407784;
 }
 
-.samuraitoravel-active {
-	background-color: #5196a6 !important;
-	border-color: #5196a6 !important;
+.samuraitravel-active {
+  background-color: #5196a6 !important;
+  border-color: #5196a6 !important;
 }
 
 .samuraitravel-pre-wrap {
-	/* 改行文字で行を折り返す*/
-	white-space:pre-wrap;
+	/* 改行文字で行を繰り返す */
+	white-space: pre-wrap;
 }
 
 .samuraitravel-link-danger {
-  color: #f2594b;
+	color: #f2594b;
 }
 
 .samuraitravel-link-danger:hover {
-  color: #a63c3c;
+	color: #a63c3c;
 }
 
 .samuraitravel-btn-danger {
-  background-color: #f2594b !important;
-  transition: 0.1s;
+	background-color: #f2594b !important;
+	transition: 0.1s;
 }
 
 .samuraitravel-btn-danger:hover {
-  opacity: 0.8;
+	opacity: 0.8;
 }
 
 .samuraitravel-card-link {
@@ -110,6 +118,16 @@ footer {
 
 .samuraitravel-sort-box {
 	width: 150px;
+}
+
+.samuraitravel-vertical-card-image {
+	width: 100%;
+	height: 150px;
+	object-fit: cover;
+}
+
+.samuraitravel-search-form {
+	max-width: 300px;
 }
 
 .samuraitravel-swiper {
@@ -160,8 +178,40 @@ footer {
   color: #ffffff;
 }
 
+.samuraitravel-star {
+  color: #FFA500;
+}
+
+.samuraitravel-star:focus {
+	color: #FFA500;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: auto;
+  gap: 20px;
+}
+
+.review-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+select {
+  background-color: #FFFFFF !important; /* 背景色を白 */
+  color: #000000 !important; /* 文字色を黒 */
+}
+
+option {
+  background-color: #FFFFFF !important; /* 背景色を白 */
+  color: #000000 !important; /* 文字色を黒 */
+}
+
 @media screen and (min-width: 1400px) {
-  .samuraitravel-container {
-    max-width: 1200px;
-  }
+ .samuraitravel-container {
+   max-width: 1200px;
+ }
 }

@@ -1,5 +1,6 @@
 package com.example.samuraitravel.controller;
 
+
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -25,39 +26,42 @@ public class AdminUserController {
 	public AdminUserController(UserService userService) {
 		this.userService = userService;
 	}
-	
+
+	//会員一覧を表示するメソッド
 	@GetMapping
-	public String index(@RequestParam(name = "keyword", required = false)String keyword,
-			@PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.ASC)Pageable pageable,
-			Model model)
-	{
+	public String index(@RequestParam(name = "keyword", required = false) String keyword,
+						@PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.ASC) Pageable pageable,
+						Model model) {
 		Page<User> userPage;
 		
-		if (keyword != null && !keyword.isEmpty()) {
+		//キーワードが存在する場合は検索結果を、存在しない場合は全件を取得
+		if(keyword != null && !keyword.isEmpty()) {
 			userPage = userService.findUserByNameLikeOrFuriganaLike(keyword, keyword, pageable);
 		} else {
-			userPage = userService.findAllUsers(pageable);
+			userPage = userService.findAllUser(pageable);
 		}
-		
 		model.addAttribute("userPage", userPage);
 		model.addAttribute("keyword", keyword);
 		
 		return "admin/users/index";
 	}
 	
+	//会員詳細を表示するメソッド
 	@GetMapping("/{id}")
-    public String show(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAttributes, Model model) {
-        Optional<User> optionalUser  = userService.findUserById(id);
-
-        if (optionalUser.isEmpty()) {
-            redirectAttributes.addFlashAttribute("errorMessage", "ユーザーが存在しません。");
-
-            return "redirect:/admin/users";
-        }
-
-        User user = optionalUser.get();
-        model.addAttribute("user", user);
-
-        return "admin/users/show";
-    } 
+	public String show(@PathVariable(name = "id") Integer id,
+					   RedirectAttributes redirectAttributes,
+					   Model model) {
+		Optional<User> optionalUser = userService.findUserById(id);
+		
+		if(optionalUser.isEmpty()) {
+			redirectAttributes.addFlashAttribute("errorMessage", "ユーザーが存在しません。");
+			
+			return "redirect:/admin/users";
+		}
+		
+		User user = optionalUser.get();
+		model.addAttribute("user", user);
+		
+		return "admin/users/show";
+	}
 }

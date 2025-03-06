@@ -25,7 +25,8 @@ public class UserController {
 	public UserController(UserService userService) {
 		this.userService = userService;
 	}
-	
+
+	// ユーザーのホームページを表示するメソッド
 	@GetMapping
 	public String index(@AuthenticationPrincipal UserDetailsImpl userDetailsImpl, Model model) {
 		User user = userDetailsImpl.getUser();
@@ -35,39 +36,47 @@ public class UserController {
 		return "user/index";
 	}
 	
+	// ユーザー情報編集ページを表示するメソッド
 	@GetMapping("/edit")
 	public String edit(@AuthenticationPrincipal UserDetailsImpl userDetailsImpl, Model model) {
+		// 現在のユーザー情報を取得
 		User user = userDetailsImpl.getUser();
+		// ユーザー情報をフォームに設定
 		UserEditForm userEditForm = new UserEditForm(user.getName(), user.getFurigana(), user.getPostalCode(), user.getAddress(), user.getPhoneNumber(), user.getEmail());
 		
+		// モデルにフォームを追加
 		model.addAttribute("userEditForm", userEditForm);
 		
 		return "user/edit";
 	}
 	
+	// ユーザー情報を更新するメソッド
 	@PostMapping("/update")
 	public String update(@ModelAttribute @Validated UserEditForm userEditForm,
-			BindingResult bindingResult,
-			@AuthenticationPrincipal UserDetailsImpl userDetailsImpl,
-			RedirectAttributes redirectAttributes,
-			Model model)
+						 BindingResult bindingResult,
+						 @AuthenticationPrincipal UserDetailsImpl userDetailsImpl,
+						 RedirectAttributes redirectAttributes,
+						 Model model)
 	{
+		// 現在のユーザー情報を取得
 		User user = userDetailsImpl.getUser();
 		
-		//メールアドレスが変更されており、かつ登録済みであれば、BindingResultp部ジェクトにエラー内容を追加する
-		if (userService.isEmailChanged(userEditForm, user) && userService.isEmailRegistered(userEditForm.getEmail())) {
+		//メールアドレスが変更されており、かつ登録済みであれば、BindingResultオブジェクトにエラー内容を追加する
+		if(userService.isEmailChanged(userEditForm, user) && userService.isEmailRegistered(userEditForm.getEmail())) {
 			FieldError fieldError = new FieldError(bindingResult.getObjectName(), "email", "すでに登録済みのメールアドレスです。");
 			bindingResult.addError(fieldError);
 		}
 		
-		if (bindingResult.hasErrors()) {
+		// バリデーションエラーがある場合、編集ページに戻る
+		if(bindingResult.hasErrors()) {
 			model.addAttribute("userEditForm", userEditForm);
 			
 			return "user/edit";
 		}
 		
-		userService.updateUser(userEditForm,  user);
-		redirectAttributes.addFlashAttribute("successMessage", "会員情報を編集しました");
+		// ユーザー情報を更新
+		userService.updateUser(userEditForm, user);
+		redirectAttributes.addFlashAttribute("successMessage", " 会員情報を編集しました。");
 		
 		return "redirect:/user";
 	}
