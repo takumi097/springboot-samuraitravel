@@ -63,4 +63,7 @@ public class House {
 	// Houseエンティティが削除されると、関連するReviewエンティティも自動的に削除される
 	@OneToMany(mappedBy = "house", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	private List<Review> reviews;
+	
+	@OneToMany(mappedBy = "house", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+	private List<Favorite> favorites;
 }

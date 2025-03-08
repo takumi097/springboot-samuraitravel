@@ -210,6 +210,31 @@ option {
   color: #000000 !important; /* 文字色を黒 */
 }
 
+.favorite-button {
+	position: absolute; /* 絶対位置を指定 */
+	top: 80px; /* ページの上から10pxの位置に配置 */
+	right: 10px; /* ページの右端から10pxの位置に配置 */
+    padding: 10px 20px; /* 内側の余白（上下左右） */
+    font-size: 16px; /* フォントサイズ */
+    font-weight: bold; /* 太字で視認性を高める */
+    color: #fff; /* 文字色を白に */
+    background-color: #ff5a5f; /* 背景色を赤系に設定 */
+    border: none; /* ボーダーなし */
+    border-radius: 5px; /* 角を丸くする */
+    text-align: center; /* 中央揃え */
+    text-decoration: none; /* 下線を削除 */
+    cursor: pointer; /* マウスポインタをポインタ型に */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* 影を付ける */
+    transition: background-color 0.3s ease, transform 0.2s; /* ホバー時のアニメーション */
+}
+
+/* ホバー時の変化 */
+.favorite-button:hover {
+    background-color: #e04e4e; /* 背景色を少し暗くする */
+    transform: translateY(-2px); /* ホバー時に少し浮くように */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3); /* 影を強調 */
+}
+
 @media screen and (min-width: 1400px) {
  .samuraitravel-container {
    max-width: 1200px;

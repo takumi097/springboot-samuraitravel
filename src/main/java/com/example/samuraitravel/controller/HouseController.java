@@ -22,6 +22,7 @@ import com.example.samuraitravel.entity.Review;
 import com.example.samuraitravel.entity.User;
 import com.example.samuraitravel.form.ReservationInputForm;
 import com.example.samuraitravel.security.UserDetailsImpl;
+import com.example.samuraitravel.service.FavoriteService;
 import com.example.samuraitravel.service.HouseService;
 import com.example.samuraitravel.service.ReviewService;
 
@@ -30,11 +31,14 @@ import com.example.samuraitravel.service.ReviewService;
 public class HouseController {
 	private final HouseService houseService;
 	private final ReviewService reviewService;
+	private final FavoriteService favoriteService;
+	private boolean hasPostedFavorite;
 	
 	
-	public HouseController(HouseService houseService, ReviewService reviewService) {
+	public HouseController(HouseService houseService, ReviewService reviewService, FavoriteService favoriteService) {
 		this.houseService = houseService;
 		this.reviewService = reviewService;
+		this.favoriteService = favoriteService;
 		
 	}
 
@@ -110,8 +114,13 @@ public class HouseController {
 			hasPostedReview = reviewService.hasUserPostedReview(id, user.getId());
 		}
 		
-		model.addAttribute("hasPostedReview", hasPostedReview);
+		boolean hasPostedFavorite = false;
+		if (user != null) {
+			hasPostedFavorite = favoriteService.hasUserPostedFavorite(id, user.getId());
+		}
 		
+		model.addAttribute("hasPostedReview", hasPostedReview);
+		model.addAttribute("hasPostedFavorite", hasPostedFavorite);
 		
 		return "houses/show";
 	}

@@ -26,12 +26,30 @@
                                 </ol>
                             </nav>
 
+							<div sec:authorize="isAuthenticated()">
+								<div th;if="${isFavorite}">
+									<form method="POST" th:action="@{/houses/__${house.id}__/addfavorite}" th:if="${!hasPostedFavorite}">
+										<input type="hidden" name="houseId" th:value="${house.getId()}">
+										<button type="submit" class="favorite-button">
+											<span class="">&#9825お気に入り追加</span>
+										</button>
+									</form>
+							
+									<form method="POST" th:action="@{/houses/__${house.id}__/deleteFavorite}" th:if="${hasPostedFavorite}">
+										<input type="hidden" name="houseId" th:value="${house.getId()}">
+										<button type="submit" class="favorite-button">
+											<span class="">&#9829お気に入り削除</span>
+										</button> 
+									</form>
+								</div>
+							</div>
+							
                             <h1 class="mb-4 text-center" th:text="${house.name}"></h1>
 
                             <div th:if="${errorMessage}" class="alert alert-danger">
                                 <span th:text="${errorMessage}"></span>
                             </div>
-                            
+						
                             <div class="mb-4">
                                 <img th:if="${house.imageName}" th:src="@{/storage/__${house.imageName}__}" class="w-100" alt="民宿画像">
                                 <img th:unless="${house.imageName}" th:src="@{/images/noImage.png}" class="w-100" alt="NO IMAGE">
